@@ -13,10 +13,11 @@ WriteMakefile(
 	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
 	
 	'PREREQ_PM'    => { 
-		'Test::More'  => '0',
-		'Mac::Carbon' => '0.77',
-		'Mac::Speech' => '0',
-		'Mac::Files'  => '0',
+		'Test::More'     => '0',
+		'Mac::Carbon'    => '0.77',
+		'Mac::Speech'    => '0',
+		'Mac::Files'     => '0',
+		'Pod::PseudoPod' => '0',
 		},
 
 	'EXE_FILES'    => [ 'bin/pod2speech' ],
