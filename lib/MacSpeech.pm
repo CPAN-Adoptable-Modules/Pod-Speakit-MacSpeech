@@ -21,7 +21,7 @@ $VERSION = '0.11';
 
 =head1 NAME
 
-Pod::SpeakIt::MacSpeech - This is the description
+Pod::SpeakIt::MacSpeech - Speak Pod
 
 =head1 SYNOPSIS
 
