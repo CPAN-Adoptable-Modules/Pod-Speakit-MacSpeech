@@ -17,7 +17,7 @@ my $channel = NewSpeechChannel($voice);
 SetSpeechPitch($channel, 0.9*GetSpeechPitch($channel) );
 SetSpeechRate( $channel, 0.7*GetSpeechRate($channel) );
 
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 =head1 NAME
 
