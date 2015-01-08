@@ -1,10 +1,12 @@
 require 5.008;
+
+package Pod::SpeakIt::MacSpeech;
 use strict;
 use warnings;
 
 use File::Spec::Functions qw(catfile);
 
-my $module    = 'Pod::SpeakIt::MacSpeech';
+my $module    = __PACKAGE__;
 my $github    = 'https://github.com/briandfoy/Pod-Speakit-MacSpeech';
 my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
@@ -18,7 +20,8 @@ my %WriteMakefile = (
 	'EXE_FILES'    => [ 'bin/pod2speech' ],
 
 	'CONFIGURE_REQUIRES' => {
-		'ExtUtils::MakeMaker' => '6.64',
+		'ExtUtils::MakeMaker'   => '6.64',
+		'File::Spec::Functions' => '0',
 		},
 
 	'BUILD_REQUIRES' => {
