@@ -1,27 +1,54 @@
-require 5.006;
+require 5.008;
 use strict;
 use warnings;
 
-my $github    = 'https://github.com/briandfoy/';
-my $main_file = 'lib/Pod/SpeakIt/MacSpeech.pm';
+use File::Spec::Functions qw(catfile);
+
+my $module    = 'Pod::SpeakIt::MacSpeech';
+my $github    = 'https://github.com/briandfoy/Pod-Speakit-MacSpeech';
+my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
 my %WriteMakefile = (
-	'NAME'	        => 'Pod::SpeakIt::MacSpeech',
+	'NAME'	        => $module,
 	'ABSTRACT_FROM' => $main_file,
 	'VERSION_FROM'  => $main_file,
 	'LICENSE'       => 'perl',
 	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 
 	'EXE_FILES'    => [ 'bin/pod2speech' ],
-	
-	'PREREQ_PM'    => { 
-		'Test::More'     => '0',
+
+	'CONFIGURE_REQUIRES' => {
+		'ExtUtils::MakeMaker' => '6.64',
+		},
+
+	'BUILD_REQUIRES' => {
+		},
+
+	'TEST_REQUIRES' => {
+		'Test::More' => '0.94',
+		},
+
+	'PREREQ_PM'     => {
 		'Mac::Carbon'    => '0.77',
 		'Mac::Speech'    => '0',
 		'Mac::Files'     => '0',
 		'Pod::PseudoPod' => '0',
 		},
 
+	'META_MERGE' => {
+		'meta-spec' => { version => 2 },
+		resources => {
+			repository => {
+				type => 'git',
+				url  => "$github.git",
+				web  => $github,
+				},
+			bugtraker => {
+				web    => "$github/issues",
+				},
+			homepage => $github,
+			},
+		},
 
 	clean  => { FILES    => q|Pod-SpeakIt-MacSpeech-*| },
 	);
