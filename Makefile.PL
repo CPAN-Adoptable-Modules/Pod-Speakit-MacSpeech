@@ -53,7 +53,7 @@ my %WriteMakefile = (
 			},
 		},
 
-	clean  => { FILES    => q|Pod-SpeakIt-MacSpeech-*| },
+	clean => { FILES => "$dist-*" },
 	);
 
 sub arguments { \%WriteMakefile }
