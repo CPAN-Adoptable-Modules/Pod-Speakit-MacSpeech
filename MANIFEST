@@ -1,4 +1,3 @@
-.svnignore
 bin/pod2speech
 Changes
 examples/placeholder.pl
