@@ -18,6 +18,8 @@ SetSpeechRate( $channel, 0.7*GetSpeechRate($channel) );
 
 $VERSION = '0.12';
 
+=encoding utf8
+
 =head1 NAME
 
 Pod::SpeakIt::MacSpeech - Speak Pod
@@ -40,20 +42,20 @@ sub DESTROY
 	$_[0]->SUPER::DESTROY;
 	DisposeSpeechChannel($channel)
 	}
-	
+
 sub handle_text { $_[0]{'scratch'} .= $_[1] }
 
-sub speak_it 
-	{	
+sub speak_it
+	{
 	SpeakText( $channel, $_[0]->{'scratch'} );
 	sleep 1 while SpeechBusy();
 	$_[0]->{'scratch'} = '';
 	sleep 1;
-	
+
 	return;
 	}
 
-sub document_header  
+sub document_header
 	{
 	print STDERR "HERE I AM";
 	}
@@ -63,15 +65,15 @@ sub start_head1 { }
 sub start_head2 { }
 sub start_head3 { }
 sub start_head4 { }
-	
+
 sub end_head0 { $_[0]->speak_it }
 sub end_head1 { $_[0]->speak_it }
 sub end_head2 { $_[0]->speak_it }
 
 sub end_Para  { $_[0]->speak_it }
-	
-sub end_Verbatim 
-	{	
+
+sub end_Verbatim
+	{
 	sleep 1;
 	$_[0]->{scratch} = "Code section (skipping)";
 	$_[0]->speak_it;
